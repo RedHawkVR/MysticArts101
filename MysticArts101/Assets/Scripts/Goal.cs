@@ -5,15 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class Goal : MonoBehaviour {
 
-	public Scene nextScene;
-
+	//public Scene nextScene;
+	public string sceneName;
+	
 	private void OnCollisionEnter(Collision collision)
 	{
 		if (collision.gameObject.CompareTag("Ball"))
 		{
-			if (nextScene.IsValid())
+			if (SceneManager.GetSceneByName(sceneName).IsValid())
 			{
-				SceneManager.LoadScene(nextScene.name);
+				SceneManager.LoadScene(sceneName);
+			}
+			else
+			{
+				Debug.Log("Scene: " + sceneName + " not found!");
 			}
 		}
 	}

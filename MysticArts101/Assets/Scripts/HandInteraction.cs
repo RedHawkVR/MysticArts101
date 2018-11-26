@@ -10,8 +10,8 @@ public class HandInteraction : MonoBehaviour
 	//private bool oculus;
 
 	public GameObject movableObject;
-	private Vector3 destination = new Vector3();
-	public float speed = 10.0f;
+	//private Vector3 destination = new Vector3();
+	public float speed = 1.0f;
 
 	void Start()
 	{
@@ -26,13 +26,18 @@ public class HandInteraction : MonoBehaviour
 			device = SteamVR_Controller.Input((int)trackedObj.index);
 			if (device.GetPressDown(SteamVR_Controller.ButtonMask.Touchpad))
 			{
-				destination = new Vector3(this.transform.position.x*-1.0f, movableObject.transform.position.y, this.transform.position.z*-1.0f);
-				Vector3.Lerp(movableObject.transform.position, destination, Time.deltaTime * speed);
+				//destination = new Vector3(this.transform.position.x*-1.0f, movableObject.transform.position.y, this.transform.position.z*-1.0f);
+				//Vector3.Lerp(movableObject.transform.position, destination, Time.deltaTime * speed);
+				movableObject.transform.LookAt(this.transform);
+				movableObject.transform.Rotate(0, 180, 0);
+				movableObject.transform.Translate(Vector3.forward * Time.deltaTime * speed, Space.World);
 			}
 			else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
 			{
-				destination = new Vector3(this.transform.position.x, movableObject.transform.position.y, this.transform.position.z);
-				Vector3.Lerp(movableObject.transform.position, destination, Time.deltaTime * speed);
+				//destination = new Vector3(this.transform.position.x, movableObject.transform.position.y, this.transform.position.z);
+				//Vector3.Lerp(movableObject.transform.position, destination, Time.deltaTime * speed);
+				movableObject.transform.LookAt(this.transform);
+				movableObject.transform.Translate(Vector3.forward * Time.deltaTime * speed, Space.World);
 			}
 		}
 	}
