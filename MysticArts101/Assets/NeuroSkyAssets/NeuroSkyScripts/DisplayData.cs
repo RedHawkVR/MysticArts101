@@ -78,9 +78,9 @@ public class DisplayData : MonoBehaviour
 		
 		GUILayout.EndHorizontal();
 
-        GUILayout.Label("PoorSignal1:" + poorSignal1);
-        GUILayout.Label("Attention1:" + attention1);
-        GUILayout.Label("Meditation1:" + meditation1);
+        GUILayout.Label("Signal:" + poorSignal1);
+        GUILayout.Label("Attention:" + attention1);
+        GUILayout.Label("Meditation:" + meditation1);
 		GUILayout.Label("Delta:" + delta);
 
     }
